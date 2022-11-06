@@ -33,5 +33,6 @@ func main(){
    fmt.Println(sayHello("Dipti"))
    fmt.Println(sayLoudly("I am developer"))
    fmt.Println(getRectangleArea(5,10))
+   fmt.Println("Test")
    
 }
