@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 
 func main()  {
@@ -23,6 +26,29 @@ for i <=20{
 	i++
 }
 
+fmt.Println(fizzbuzz(16))
 
+
+}
+
+func fizzbuzz(n int)[] string{
+	//Exercise
+var result[]string
+
+
+for i:=1;i <=n;i++{
+	if i % 3==0 {
+		result = append(result, "Buzz")
+	}else if i %5==0{
+        result = append(result, "Fizz")
+	}else if i%15 ==0{
+		result = append(result, "FizzBuzz")
+	}else {
+		result = append(result, strconv.Itoa(i))
+	}
+
+	
+}
+return result
 }
 
