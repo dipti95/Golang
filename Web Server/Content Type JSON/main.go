@@ -40,11 +40,20 @@ func index(w http.ResponseWriter, r* http.Request){
 	}
 }
 
+func getCities(w http.ResponseWriter, r* http.Request){
+	w.Header().Set("Content-Type", "application/json")
+
+	w.WriteHeader(http.StatusOK)
+
+	json.NewEncoder(w).Encode(cityPopulations)
+}
+
 
 func main(){
 
    http.HandleFunc("/", getDictionary)
-   http.HandleFunc("/cities", index)
+   http.HandleFunc("/getcities", index)
+   http.HandleFunc("/cities", getCities)
 
 	fmt.Println("Server Listening port 3000...")
 	http.ListenAndServe(":3000", nil)
