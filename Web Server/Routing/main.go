@@ -18,6 +18,40 @@ var dictionary = map[string]string{
 }
 
 
+var members = map[string]string{
+	"1": "Andy",
+	"2": "Peter",
+	"3": "Gabriella",
+	"4": "Jordy",
+}
+
+
+func getMember(w http.ResponseWriter, r* http.Request){
+	w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+
+	json.NewEncoder(w).Encode(members)
+}
+
+func deleteMember(w http.ResponseWriter, r* http.Request)  {
+	 w.Header().Set("Content-Type", "application/json")
+	
+
+	 id := mux.Vars(r)["id"]
+
+	 if _, ok := members[id];ok {
+        delete(members, id)
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(members)
+
+	 }else {
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(members)
+	}
+
+
+}
+
 
 func getDictionary(w http.ResponseWriter, r* http.Request ){
     w.Header().Set("Content-Type", "application/json")
@@ -55,6 +89,9 @@ func main(){
 	router.HandleFunc("/dictionary", getDictionary).Methods("GET")
 
 	router.HandleFunc("/dictionary",create ).Methods("POST")
+
+	router.HandleFunc("/member", getMember).Methods("GET")
+	router.HandleFunc("/member/{id}", deleteMember).Methods("DELETE")
 
    //http.HandleFunc("/", getDictionary)
 
