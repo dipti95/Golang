@@ -65,3 +65,15 @@ func TestTokenize(t *testing.T) {
 	*/
 
 }
+
+// func FuzzTokenize(f *testing.F) {
+// 	f.Fuzz(func(t *testing.T, text string) {
+// 		tokens := Tokenize(text)
+// 		lText := strings.ToLower(text)
+// 		for _, tok := range tokens {
+// 			if !strings.Contains(lText, tok) {
+// 				t.Fatal(tok)
+// 			}
+// 		}
+// 	})
+// }
