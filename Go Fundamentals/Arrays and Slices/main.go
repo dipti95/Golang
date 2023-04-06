@@ -1,10 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
+// GenerateRandomString generates a random string of the given length.
+// The string consists of uppercase and lowercase letters and digits.
+//
+// Example:
+//
+//	result := GenerateRandomString(8)
+//	fmt.Println(result) // "z5F7G9J3"
+func GenerateRandomString(length int) string {
+	rand.Seed(time.Now().UnixNano())
 
-func main(){
-	
+	const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	str := make([]byte, length)
+	for i := range str {
+		str[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(str)
+}
+
+func main() {
+
 	// var fibonacciArray [8] int
 
 	// fibonacciArray[0]=0;
@@ -15,14 +36,14 @@ func main(){
 	// fibonacciArray[5]=5
 	// fibonacciArray[6]=8
 	// fibonacciArray[7]=13
- 
-    /** Array :
-	   1. contains an ordered list of elements of single type
-	   2. contains a specific number of elements
-	*/     
+
+	/** Array :
+	  1. contains an ordered list of elements of single type
+	  2. contains a specific number of elements
+	*/
 
 	// we can also write like this
-	 fibonacciArray := [8]int{0,1,1,2,3,5,8,13}
+	fibonacciArray := [8]int{0, 1, 1, 2, 3, 5, 8, 13}
 
 	fmt.Println(fibonacciArray)
 	fmt.Println(fibonacciArray[0])
@@ -30,7 +51,7 @@ func main(){
 	fmt.Println(len(fibonacciArray))
 	fmt.Println(fibonacciArray[0:4])
 
-	/** 
+	/**
 	Slice:
 	1. Contains an ordered list of elements of single type
 	2. Contains a list of items that can expand and shrink.(This is the key difference between a slice and an array!)
@@ -43,15 +64,13 @@ func main(){
 	fmt.Println(len(fruitSlice))
 	fmt.Println(fruitSlice[0:2])
 
-	fruitSlice = append(fruitSlice,"Grape", "Mango" )
-     
+	fruitSlice = append(fruitSlice, "Grape", "Mango")
 
 	fmt.Println(fruitSlice)
 
-
 	// Exercise
 
-	languages := []string{"Go","Javascript", "Ruby", "Python"}
+	languages := []string{"Go", "Javascript", "Ruby", "Python"}
 
 	fmt.Println(languages)
 	fmt.Println(len(languages))
@@ -62,6 +81,7 @@ func main(){
 
 	fmt.Println(languages)
 
-	
+	res := GenerateRandomString(9)
+	fmt.Println(res)
 
 }
